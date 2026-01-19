@@ -35,6 +35,6 @@ You need Node.js installed. You also need access to Redis and PostgreSQL (either
 Run these commands in your terminal:
 
 ```bash
-git clone [https://github.com/MethHead29/order-engine.git](https://github.com/MethHead29/order-engine.git)
+git clone https://github.com/MethHead29/order-engine.git
 cd order-engine
 npm install
