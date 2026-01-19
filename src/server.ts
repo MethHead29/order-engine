@@ -50,7 +50,6 @@ fastify.register(async (f) => {
 const start = async () => {
   await initDB();
   try {
-    // HOST 0.0.0.0 is CRITICAL for Render
     await fastify.listen({ port: Number(CONFIG.PORT), host: '0.0.0.0' });
     console.log(`Server running on port ${CONFIG.PORT}`);
   } catch (err) {

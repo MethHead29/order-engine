@@ -4,18 +4,17 @@ import { db } from './db.js';
 import { MockDexRouter } from './dexRouter.js';
 import { CONFIG } from './config.js';
 
-// Redis Config
+
 const isCloudRedis = CONFIG.REDIS_URL.includes('upstash');
 
 const redisOptions = {
-  maxRetriesPerRequest: null, // Required by BullMQ
-  family: 4, // <--- THIS IS THE FIX (Forces IPv4)
+  maxRetriesPerRequest: null, 
+  family: 4, 
   tls: isCloudRedis ? { rejectUnauthorized: false } : undefined,
   retryStrategy: (times: number) => Math.min(times * 50, 2000),
 };
 
 // 1. Create Connection for Queue (Producer)
-// We pass the URL *and* the options object merged
 const connection = new Redis(CONFIG.REDIS_URL, redisOptions);
 
 connection.on('connect', () => console.log('✅ Redis Queue Connected!'));

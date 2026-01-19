@@ -8,7 +8,7 @@ export const db = new Pool({
 export const initDB = async () => {
   try {
     const client = await db.connect();
-    console.log('✅ Database Connected!');
+    console.log('Database Connected!');
     client.release();
 
     await db.query(`
@@ -24,7 +24,7 @@ export const initDB = async () => {
       );
     `);
   } catch (err) {
-    console.error('❌ Database Failed:', err);
+    console.error('Database Connecion dFailed:', err);
     process.exit(1);
   }
 };
